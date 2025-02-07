@@ -2,13 +2,15 @@ name: Auto Assign
 
 on:
   pull_request:
-    types: [opened, reopened]
+    types: [opened, ready_for_review, closed]
 
 jobs:
   assin:
     runs-on: ubuntu-latest
     steps:
       - name: Assign PR
-        uses: hkusu/review_assign_action@v1.4.0
+        uses: hkusu/review-assign-action@v1
         with:
           assignees: ${{ github.actor }}
+          ready-comment: 'Ready for review :ok:' # if there are reviewers, posted when opened or draft is released
+          merged-comment: 'It was merged. Thanks for your review :wink:' # if reviewed, posted when merged
