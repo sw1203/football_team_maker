@@ -8,6 +8,9 @@ jobs:
   assign:
     runs-on: ubuntu-latest
     steps:
+      - name: Check github.actor value
+        run: echo "Actor: ${{ github.actor }}"
+
       - uses: hkusu/review-assign-action@v1
         with:
           assignees: ${{ github.actor }} # assign pull request author
