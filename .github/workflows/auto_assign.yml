@@ -1,0 +1,14 @@
+name: Auto Assign
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  assin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign PR
+        uses: hkusu/review_assign_action@v1.4.0
+        with:
+          assignees: ${{ github.actor }}
