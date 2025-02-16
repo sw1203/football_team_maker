@@ -9,15 +9,10 @@ class TeamMaker:
     def make_teams(self, n_team):
         random.shuffle(self.players)
         teams = {i: [] for i in range(n_team)}
-        for player in self.players:
-            team = min(teams, key=lambda x: len(teams[x]))
+        for idx, player in enumerate(self.players):
+            team = idx % n_team
             teams[team].append(player)
         return teams.values()
-
-
-    def make_teams_with_seed(self, seed, n_team):
-        random.seed(seed)
-        return self.make_teams(n_team)
 
 
 if __name__=="__main__":
